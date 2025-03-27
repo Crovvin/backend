@@ -17,7 +17,6 @@ pokemonRouter.get("/:name", async (req, res) => {
       height: response.data.height,
       weight: response.data.weight,
     };
-
     res.json(pokemonData);
   } catch (e) {
     res.status(404).json({ message: "Pokemon cannot be found" });
@@ -31,15 +30,5 @@ pokemonRouter.get("/", async (req, res) => {
     res.json(savedPokemon);
   } catch (e) {
     res.status(500).json({ message: "Error getting Pokemon" });
-  }
-});
-
-// DELETE pokemon
-pokemonRouter.delete("/:name", async (req, res) => {
-  try {
-    await Pokemon.findOneAndDelete({ name: req.params.name });
-    res.json({ message: "Pokémon deleted" });
-  } catch (e) {
-    res.status(500).json({ message: "Error deleting a Pokemon" });
   }
 });
