@@ -118,7 +118,7 @@ userRouter.get("/:username/favorites", async (req, res) => {
 userRouter.delete("/:username/favorites/:pokemonName", async(req,res) => {
     try{
         const { username } = req.params;
-        const { pokemonId } = req.body;  // Get the Pokémon ID from request body
+        const { pokemonId } = req.body;
         const user = await User.findOne({ username });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
